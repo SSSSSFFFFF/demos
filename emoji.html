@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>抽象系统1.0</title>
+</head>
+
+<body>
+    <input class="texts" placeholder="请输入文明用语">
+    <button class="up">提交</button>
+    <div class="result"></div>
+
+    <div class="emojis"></div>
+</body>
+<script src="./jquery.min.js"></script>
+<script>
+    var host = "http://139.196.102.62:8888"
+    var result;
+    var queryData = {
+        "dataBase": "emoji",
+        "collectionName": "emojis",
+        "data": {
+            "emoji": "emoji"
+        }
+    }
+    sendAjax(queryData,"query")
+    function sendAjax(datas,type) {
+        $.ajax({
+            type: "post",
+            url: host + "/query",
+            contentType: 'application/json',
+            data: JSON.stringify(datas),
+            success: function (res) {
+                result = res
+                console.log(Object.keys(result[0]),Object.values(result[0]))
+            },
+            errror: function (err) {
+                result = err
+                console.log(result)
+            }
+        });
+
+    }
+    $(".up").click(function () {
+        toEmoji($(".texts").val())
+    })
+
+    function toEmoji(str) {
+        var emojis = {
+            "🐴": "马，妈",
+            "🐛": "冲，虫",
+            "👶": "弟，张笑彬",
+            "☕": "杯子，辈子",
+            "🐷": "猪"
+        }
+        // console.log(Object.values(emojis))
+        for (i in emojis) {
+            var arr = emojis[i].split("，");
+            for (let j = 0; j < arr.length; j++) {
+                str = str.replace(new RegExp(arr[j], 'g'), i)
+            }
+        }
+        $(".result").text(str)
+    }
+</script>
+
+</html>
