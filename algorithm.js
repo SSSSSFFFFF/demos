@@ -1,21 +1,25 @@
-
-var emojis = {
-    "🐴":"马，妈",
-    "🐛":"冲，虫",
-    "👶":"弟，张笑彬",
-    "☕":"杯子，辈子"
-}
-function toEmoji(str) {
-    str = str.split("")
-    var result = []
-    for (let i = 0; i < str.length; i++) {
-        for (j in emojis) {
-            if (emojis[j].indexOf(str[i]) >= 0) {
-                str[i] = j
-            } 
+var calculate = function (s1) {
+    s = s1.replace(/\(/g, '').replace(/\)/g, '').replace(/\s/g, '')
+    let num = 0;
+    console.log(s);
+    let s0 = 0;
+    if (Number(s) == Number(s1)) {
+        return Number(s)
+    } else {    
+        for (let i = 0; i < s.length; i++) {
+            s0 = Number(s[0])
+            if (s[i] == '+') {
+                num = num + Number(s[i + 1])
+            } else if (s[i] == '-') {
+                num = num - Number(s[i + 1])
+                console.log(num);
+            }
         }
+        num = num + s0
+        console.log(num)
+        return num
     }
-    console.log(str.join(''))
-}
-     
-toEmoji("张笑彬一辈子赛马冲冲冲")
+    
+};
+
+calculate("1-11")
