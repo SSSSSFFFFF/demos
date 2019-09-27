@@ -1,10 +1,20 @@
-import wrapWithLoadData from './wrapWithLoadData'
+import React, { Component } from 'react'
 
-class InputWithUserName extends Component {
-    render() {
-        return <input value={this.props.data} />
+export default (WrappedComponent, name) => {
+    class NewComponent extends Component {
+        constructor() {
+            super()
+            this.state = { data: null }
+        }
+
+        componentWillMount() {
+            let data = localStorage.getItem(name)
+            this.setState({ data })
+        }
+
+        render() {
+            return <WrappedComponent data={this.state.data} />
+        }
     }
+    return NewComponent
 }
-
-InputWithUserName = wrapWithLoadData(InputWithUserName, 'username')
-export default InputWithUserName

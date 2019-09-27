@@ -23,7 +23,6 @@ class CommentInput extends Component {
       this.setState({ username: username})
     }
   }
-
   componentDidMount() {
     this.textarea.focus()
   }
