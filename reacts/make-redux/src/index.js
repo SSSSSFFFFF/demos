@@ -9,6 +9,21 @@ let appState = {
     }
 }
 
+function createStore(state, stateChanger) {
+    const listeners = []
+    const subscribe = (listener) => listeners.push(listener)
+    const getState = () => state
+    const dispatch = (action) => {
+        stateChanger(state, action)
+        listeners.forEach((listener) => listener())
+    }
+    return {
+        getState,
+        dispatch,
+        subscribe
+    }
+}
+
 function dispatch(action) {
     switch (action.type) {
         case 'UPDATE_TITLE_TEXT':
