@@ -1,25 +1,47 @@
-var calculate = function (s1) {
-    s = s1.replace(/\(/g, '').replace(/\)/g, '').replace(/\s/g, '')
-    let num = 0;
-    console.log(s);
-    let s0 = 0;
-    if (Number(s) == Number(s1)) {
-        return Number(s)
-    } else {    
-        for (let i = 0; i < s.length; i++) {
-            s0 = Number(s[0])
-            if (s[i] == '+') {
-                num = num + Number(s[i + 1])
-            } else if (s[i] == '-') {
-                num = num - Number(s[i + 1])
-                console.log(num);
-            }
+var maxNumberOfBalloons = function (text) {
+    let arr = "balon"
+    let b = 0,
+        a = 0,
+        l = 0,
+        o = 0,
+        n = 0;
+    for (let i = 0; i < text.length; i++) {
+        if (arr.indexOf(text[i]) >= 0) {
+           switch (text[i]) {
+                case "b":
+                   b++
+                   break;
+                case "a":
+                    a++
+                    break;
+                case "l":
+                    l++
+                    break;
+                case "o":
+                    o++
+                    break;
+                case "n":
+                    n++
+                    break;
+                default:
+                   break;
+           }
+          
         }
-        num = num + s0
-        console.log(num)
-        return num
     }
-    
+    console.log(b,a,l,o,n)
+    let max = 0;
+     if(l<o){
+        max = o
+     } else {
+       max = l
+     }
+    let resultnum = Math.floor(max / 2)
+    if (resultnum <= b && resultnum <= a && resultnum <= n ) {
+        return resultnum
+    } else {
+        let newArr = [b,a,n]
+        return newArr.sort()[0]
+    }
 };
-
-calculate("1-11")
+maxNumberOfBalloons("ballon")
