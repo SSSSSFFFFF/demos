@@ -1,17 +1,6 @@
-var longestCommonPrefix = function (strs) {
-    let result = ''
-    check(0, strs)
-    function check(index,strs) {
-        console.log(index, strs)
-        for (let i = 0; i < strs[index].length; i++) {
-            console.log(strs[index][i]);
-        }
-        index++
-        if (index < strs.length){
-            check(index, strs)
-        }
-    }
-
-    
+var maximumProduct = function (nums) {
+    nums.sort((x, y) => y - x)
+    console.log(Math.max(nums[0] * nums[1] * nums[2], nums[0] * nums[nums.length - 1] * nums[nums.length - 2]));
+    return Math.max(nums[0] * nums[1] * nums[2], nums[0] * nums[nums.length - 1] * nums[nums.length - 2]);
 };
-longestCommonPrefix(["flower", "flow", "flight"])
+maximumProduct([-1, -2, -3, 4])
