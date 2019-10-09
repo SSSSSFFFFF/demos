@@ -9,21 +9,6 @@ let appState = {
     }
 }
 
-function createStore(state, stateChanger) {
-    const listeners = []
-    const subscribe = (listener) => listeners.push(listener)
-    const getState = () => state
-    const dispatch = (action) => {
-        stateChanger(state, action)
-        listeners.forEach((listener) => listener())
-    }
-    return {
-        getState,
-        dispatch,
-        subscribe
-    }
-}
-
 function dispatch(action) {
     switch (action.type) {
         case 'UPDATE_TITLE_TEXT':
@@ -55,6 +40,12 @@ function renderContent(content) {
 }
 
 renderApp(appState) // 首次渲染页面
-dispatch({ type: 'UPDATE_TITLE_TEXT', text: '《React.js 小书》' }) // 修改标题文本
-dispatch({ type: 'UPDATE_TITLE_COLOR', color: 'blue' }) // 修改标题颜色
+dispatch({
+    type: 'UPDATE_TITLE_TEXT',
+    text: '《React.js 小书》'
+}) // 修改标题文本
+dispatch({
+    type: 'UPDATE_TITLE_COLOR',
+    color: 'blue'
+}) // 修改标题颜色
 renderApp(appState) // 把新的数据渲染到页面上
