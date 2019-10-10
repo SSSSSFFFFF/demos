@@ -1,13 +1,20 @@
-var containsDuplicate = function (nums) {
-    let result = false
-    for (let i = 0; i < nums.length; i++) {
-        for (let j = i+1; j < nums.length; j++) {
-            console.log(nums[i],nums[j]);
-            if (nums[i] == nums[j]){
-                result = true
-            } 
+var invertTree = function (root) {
+    const loop = (tree) => {
+        if (!tree) {
+            return;
+        }
+        if (tree.left === null && tree.right === null) {
+            return;
+        } else {
+            loop(tree.left ? tree.left : null);
+            loop(tree.right ? tree.right : null);
+
+            let middle = tree.left;
+            tree.left = tree.right;
+            tree.right = middle;
         }
     }
-    console.log(result);
+    loop(root);
+    return root;
 };
-containsDuplicate([1, 2, 3, 1])
+invertTree([4, 2, 7, 1, 3, 6, 9])
