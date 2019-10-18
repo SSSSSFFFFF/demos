@@ -8,12 +8,15 @@ require.config({
 console.log(1);
 require(['jquery'], function ($) {
     //通过此方式引入jquery才能使用$，接下来正常写jquery代码就好
+    $("body").click(function(){
+        console.log("clicked");
+        require(['test2'], function (x) {
+            console.log(x.test3());
+        });
+    })
     require(['test1'], function (x) {
         console.log(x.test1());
     });
-     require(['test2'], function (x) {
-         console.log(x.test3());
-     });
 })
 
 
