@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="./jquery.min.js"></script>
+<script>
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://news-at.zhihu.com/api/4/news/latest",
+  "method": "GET",
+  "headers": {
+    "Content-Type": "application/json",
+    "Accept": "*/*",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "f45e3986-b2c5-4cb4-a4fe-bbd4aa63fe6d,945d0cf7-992f-4a72-a4bd-15655507df42",
+    "cache-control": "no-cache"
+  }
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+</script>
+<body>
+    
+</body>
+</html>
