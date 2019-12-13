@@ -1,2 +1,8 @@
-let str = '恭喜“张三”、“倪英8905”、“闻人初娣4409”、“溥天苇3563”、“詹敬6869”五位用户拼单成功，100万激活尊享500万级别VIP服务，赠送《亮剑行动》调研的【至尊金股】！'
-console.log(str.split("，")[0]);
+var f = function (s) {
+    return s.replace(/-[a-z]/g, function (x) {
+        console.log(x);
+        return x[1].toUpperCase();
+    })
+}
+var s1 = "get-element-by-id";
+console.log(f(s1));
