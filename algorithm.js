@@ -1,8 +1,3 @@
-var f = function (s) {
-    return s.replace(/-[a-z]/g, function (x) {
-        console.log(x);
-        return x[1].toUpperCase();
-    })
-}
-var s1 = "get-element-by-id";
-console.log(f(s1));
+var regex = /#(\w{6}|\w{3})/g;
+var string = "#ffbbad #Fc01DF #FFF #ffE";
+console.log(string.match(regex)); 
