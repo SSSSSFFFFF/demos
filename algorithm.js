@@ -1,3 +1,3 @@
-var regex = /#(\w{6}|\w{3})/g;
-var string = "#ffbbad #Fc01DF #FFF #ffE";
-console.log(string.match(regex)); 
+var regex = /id="[^"]*"/
+var string = '<div id="container" class="main"></div>';
+console.log(string.match(regex)[0]); 
