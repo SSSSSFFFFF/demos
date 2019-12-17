@@ -1,7 +1,17 @@
-
-<svg width='100px' height='100px' version='1.1' xmlns="http://www.w3.org/2000/svg">
-    <path d='M10 10 H 90 V 90 H 10 Z' fill='transparent' stroke='black'></path>
-</svg>
+function draw(){
+    var ctx = document.getElementById('canvas').getContext('2d')
+    console.log(ctx);
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j <3; j++) {
+            ctx.save();
+            ctx.fillStyle = 'rgb('+(51*i)+','+(255-51*i)+',255';
+            ctx.translate(10+j*50,10+i*50)
+            ctx.fillRect(0,0,25,25)
+            ctx.restore();
+        }
+    }
+}
+draw()
 
 function groupBy(arr,para){
     let obj ={};
