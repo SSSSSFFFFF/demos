@@ -1,13 +1,21 @@
-function curry(fn) {
-    return function judgeCurry(...args) {
-        return fn.length > args.length ?
-            (...args1) => judgeCurry(...args, ...args1) :
-            fn(...args);
+
+//=>[1,2,3,45]
+function flattenDeep(arr){
+    let newArr = [];
+    arrMap(arr)
+    function arrMap(arr){
+        arr.map(i => {
+            if (typeof (i) == 'number') {
+                newArr.push(i)
+            } else {
+                arrMap(i)
+            }
+        })
     }
+    
+
+    console.log(newArr);
 }
 
-function ab(a,b) {
-    return a + b
-}
 
-console.log(curry(ab)(2)(3));
+flattenDeep([1, [2, [3, 4], 5]])
