@@ -1,4 +1,8 @@
 
+<svg width='100px' height='100px' version='1.1' xmlns="http://www.w3.org/2000/svg">
+    <path d='M10 10 H 90 V 90 H 10 Z' fill='transparent' stroke='black'></path>
+</svg>
+
 function groupBy(arr,para){
     let obj ={};
     if(typeof para == 'function'){
