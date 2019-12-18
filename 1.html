@@ -6,13 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.0/fingerprint2.js'></script>
-<script src="./md5.js"></script>
+<script src="./fingerprint.js"></script>
 <script>
-Fingerprint2.get(function (components) {
-          console.log(components) // an array of components: {key: ..., value: ...}
-          alert(hex_md5(components.toString()))
-        })
+var fingerprint = new Fingerprint().get();
+console.log(fingerprint)
 </script>
 <body>
   1
