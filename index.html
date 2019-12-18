@@ -8,8 +8,63 @@
 
 </head>
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-
+<style>
+    p {
+        color: #f55;
+        background: #fcc;
+        width: 200px;
+        line-height: 100px;
+        text-align:center;
+        margin: 100px;
+        display: block;
+    }
+        html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
+    .left{
+      background:pink;
+      float: left;
+      width:180px;
+    }
+    .center{
+      background:lightyellow;
+      overflow:hidden;
+      
+    }
+    .right{
+      background: lightblue;
+      width:180px;
+      float:right;
+    }
+</style>
 <body>
+ <div class="container">
+    <div class="left">
+      <pre>
+  .left{
+    background:pink;
+    float: left;
+    width:180px;
+  }
+      </pre>
+    </div>
+    <div class="right">
+       <pre>
+  .right{
+    background:lightblue;
+    width:180px;
+    float:right;
+  }
+      </pre>
+    </div>
+    <div class="center">
+    <pre>
+  .center{
+    background:lightyellow;
+    overflow:hidden;
+    height:116px;
+  }
+      </pre>
+    </div>
+  </div>
 哈哈！
 <input type="text" placeholder="请输入你的名字">
 <button>确认</button>

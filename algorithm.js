@@ -1,3 +1,64 @@
+
+
+console.log(quickSort([3, 14, 5, 4, 54, 5435, 442, 4321]));
+function quickSort(arr) {
+    if (arr.length <= 1) { return arr; }
+    var pivotIndex = Math.floor(arr.length / 2);
+    var pivot = arr.splice(pivotIndex, 1)[0];
+    var left = [];
+    var right = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] < pivot) {
+            left.push(arr[i]);
+        } else {
+            right.push(arr[i]);
+        }
+    }
+    return quickSort(left).concat([pivot], quickSort(right));
+};
+//插入排序
+function InsertionSort(array){
+    for (let i = 0; i < array.length; i++) {
+        preIndex = i - 1;
+        current = array[i];
+        while (preIndex >= 0 && array[preIndex] > current) {
+            array[preIndex + 1] = array[preIndex];
+            preIndex--;
+        }
+        array[preIndex + 1] = current;
+    }
+    console.log(array)
+}
+// 选择排序
+function SelectionSort(array) {
+    for (let i = 0; i < array.length; i++) {
+        minIndex = i;
+        for (let j = i+1; j < array.length; j++) {
+            if (array[j] < array[minIndex]) {     //寻找最小的数
+                minIndex = j;                 //将最小数的索引保存
+            }
+        }
+        temp = array[i];
+        array[i] = array[minIndex];
+        array[minIndex] = temp;
+    }
+    console.log(array);
+}
+// 冒泡排序
+function BubbleArr(array) {
+    for (let i = 0; i < array.length; i++) {
+            for (let j = 0; j < array.length - 1 ; j++) {
+                if (array[j + 1] < array[j]){
+                    let newNum = array[j]
+                    array[j] = array[j + 1]
+                    array[j + 1] = newNum
+                }
+        }
+        console.log(array)
+    }
+}
+
+
 function draw(){
     var ctx = document.getElementById('canvas').getContext('2d')
     console.log(ctx);
@@ -11,7 +72,7 @@ function draw(){
         }
     }
 }
-draw()
+// draw()
 
 function groupBy(arr,para){
     let obj ={};
