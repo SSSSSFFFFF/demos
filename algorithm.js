@@ -1,20 +1,51 @@
 
-// console.log(quickSort([3, 14, 5, 4, 54, 5435, 442, 4321]));
+
 var foo = {
     value: 1
 };
+var window = {
+    value: 2
+}
 var value = 2;
-function bar(name, age) {
+function bar(name, sb, age) {
+    this.habit = 'shopping';
     console.log(name)
+    console.log(sb);
     console.log(age)
     console.log(this.value);
 }
 
-Function.prototype.myCall = function (para) {
-    if (!para) {
-        para = window;
+bar.prototype.friend = 'kevin';
+
+Function.prototype.myBind = function (para) {
+    var that = this;
+    var args = []
+    for (let i = 1; i < arguments.length; i++) {
+        args.push(arguments[i])
     }
-    console.log(para);
+    var newBind =  function (cont) {
+        args.push(cont)
+        that.apply(this instanceof that ?this : para,args)
+    }
+    newBind.prototype = this.prototype
+    return newBind
+}
+
+Function.prototype.myApply = function (para) {
+    para = para || window;
+    para.fn = this;
+    let arr = []
+    for (let i = 0; i < arguments[1].length; i++) {
+        // arr.push('arguments[' + i+']');
+        arr.push(arguments[1][i])
+    }
+    para.fn(...arr)
+    // eval('para.fn(' + arr + ')');
+    delete para.fn
+}
+
+Function.prototype.myCall = function (para) {
+    para = para || window;
     para.fn = this;
     let arr = []
     for (let i = 1; i < arguments.length; i++) {
@@ -26,12 +57,18 @@ Function.prototype.myCall = function (para) {
     delete para.fn
 }
 
-// bar.myCall(foo, 'kevin', 19);;// 1
-bar.myCall(null);;// 1
+// bar.myCall(foo, 'kevin', 19);// 1
+// bar.myApply(foo, ['kevin', 19]);// 1
+var bindFoo = bar.myBind(foo, 'daisy','sb');
+// bindFoo('18');
+
+// let obj  = new bindFoo('18');
+// console.log("obj:",obj);
 
 
 
 
+// console.log(quickSort([3, 14, 5, 4, 54, 5435, 442, 4321]));
 // quickSort([3, 14, 5, 4, 54, 5435, 442, 4321])
 function quickSort(arr) {
     if (arr.length <= 1) { return arr; }
