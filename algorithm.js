@@ -1,6 +1,26 @@
 
 // console.log(quickSort([3, 14, 5, 4, 54, 5435, 442, 4321]));
-quickSort([3, 14, 5, 4, 54, 5435, 442, 4321])
+var foo = {
+    value: 1
+};
+
+function bar(name, age) {
+    console.log(name)
+    console.log(age)
+    console.log(this.value);
+}
+
+Function.prototype.myCall = function(para){
+    para.fn = this;
+    console.log(this)
+    para.fn()
+    delete para.fn
+}
+
+bar.myCall(foo, 'kevin', 18);;// 1
+
+
+// quickSort([3, 14, 5, 4, 54, 5435, 442, 4321])
 function quickSort(arr) {
     if (arr.length <= 1) { return arr; }
     let index = Math.floor(arr.length / 2) 
