@@ -3,21 +3,33 @@
 var foo = {
     value: 1
 };
-
+var value = 2;
 function bar(name, age) {
     console.log(name)
     console.log(age)
     console.log(this.value);
 }
 
-Function.prototype.myCall = function(para){
+Function.prototype.myCall = function (para) {
+    if (!para) {
+        para = window;
+    }
+    console.log(para);
     para.fn = this;
-    console.log(this)
-    para.fn()
+    let arr = []
+    for (let i = 1; i < arguments.length; i++) {
+        // arr.push('arguments[' + i+']');
+        arr.push(arguments[i])
+    }
+    para.fn(...arr)
+    // eval('para.fn(' + arr + ')');
     delete para.fn
 }
 
-bar.myCall(foo, 'kevin', 18);;// 1
+// bar.myCall(foo, 'kevin', 19);;// 1
+bar.myCall(null);;// 1
+
+
 
 
 // quickSort([3, 14, 5, 4, 54, 5435, 442, 4321])
