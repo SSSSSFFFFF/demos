@@ -1,3 +1,18 @@
+// var a = function () {
+//     this.sb = '2'
+//  }
+
+ var c= {
+
+ }
+//  a.prototype.sth = '1'
+//  var b = new a()
+// console.log(a.sth);
+// console.log(b);
+console.log(c)
+// console.log(b.sth);
+
+// 函数柯里化
 function curry(fn, args) {
     var length = fn.length;
     var args = args || [];
@@ -18,7 +33,7 @@ var multi = curry(multiFn);
 // console.log(multi(2)(3)(4));
 // multi(2, 3, 4);
 // multi(2)(3, 4);
-console.log(multi(2, 3)(4));
+// console.log(multi(2, 3)(4));
 
 
 // sum(1)(3)(7)
