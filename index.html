@@ -36,6 +36,26 @@
     }
 </style>
 <body>
+  <div class="wrapper">
+    <section class="header">
+        <div class="logo"></div>
+    </section>
+    <section class="main">
+        <div class="sidebar">
+            <ul class="menu">
+                <li class='li'>
+                    <a href="" id='demo'>li1-a</a>
+                </li>
+                <li class='li'>
+                    <a href="">li2</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="footer">
+        <div class="copyright"></div>
+    </section>
+</div>
  <div class="container">
     <div class="left">
       <pre>
@@ -56,13 +76,7 @@
       </pre>
     </div>
     <div class="center">
-    <pre>
-  .center{
-    background:lightyellow;
-    overflow:hidden;
-    height:116px;
-  }
-      </pre>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab harum inventore iure quia fugit aliquid veniam animi, dolorem eveniet repellendus maiores maxime deserunt similique libero impedit mollitia nesciunt ea excepturi?
     </div>
   </div>
 哈哈！
@@ -74,7 +88,7 @@
 <script src="http://pv.sohu.com/cityjson"></script>
 <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=5c426b4f76506b4b1fa8b09dc3b1b414&plugin=AMap.Geocoder"></script>
 <script>
-    console.log(returnCitySN["cip"]+','+returnCitySN["cname"])  
+    // console.log(returnCitySN["cip"]+','+returnCitySN["cname"])  
     $('button').click(function (e) { 
         console.log($('input').val())
     $.ajax({

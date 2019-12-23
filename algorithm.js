@@ -1,12 +1,49 @@
-var a = function () {
+console.log(foo);
+
+var foo = 1;
+function foo() {
+    console.log("foo");
+}
+
+
+const cusGetElementByIdByDFS = function (parentNode, id) {
+    // 深度优先, 递归实现
+    console.log("parentNode", parentNode.children);
+    if (parentNode) {
+        let target = null;
+        const children = Array.from(parentNode.children);
+        if (parentNode.id === id) {
+            return parentNode;
+        }
+        for (let i = 0; i < children.length; i++) {
+            target = cusGetElementByIdByDFS(children[i], id);
+            if (target) {
+                return target;
+            }
+        }
+    }
+    return null;
+}
+
+// 测试代码
+// console.log(cusGetElementByIdByDFS(document.querySelector('.wrapper'), 'demo'))
+
+
+function _new() {
+    let target = {};
+    let [constructor,...args] = [...arguments]
+    console.log(target)
+    target._proto_ = constructor.prototype
+    console.log(target);
+}
+// _new(a())
+
+function a() {
     this.sb = '2'
- }
+}
 
  a.prototype.sth = '1'
  var b = new a()
-console.log(a.sth);
-console.log(b);
-console.log(b.sth);
 
 // 函数柯里化
 function curry(fn, args) {
