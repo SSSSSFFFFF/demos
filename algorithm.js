@@ -1,10 +1,40 @@
-console.log(foo);
 
-var foo = 1;
-function foo() {
-    console.log("foo");
+var a = 'No. 4120 People\'s Pond Road';
+console.log(a)
+
+function erfen_digui(arr, val, left = 0, right = arr.length - 1) {
+    let mid = Math.floor((right + left) / 2)
+    if (arr[mid] == val) {
+        return '下标为' + mid
+    } else if (arr[mid] < val){
+        left  = mid +1
+    } else if (arr[mid]  > val){
+        right = mid -1
+    }
+    return erfen_digui(arr, val, left,right)
 }
 
+console.log(erfen_digui([0, 1, 2, 3, 6, 51, 56, 77, 989], 1));
+
+function _indexOf(a,b){
+    var reg = new RegExp(b,'g')
+    var c = reg.exec(a);
+    console.log(c);
+    console.log(c?c.index:-1)
+}
+var a = 'abcdefghijkl'
+var b = 'def'
+// _indexOf(a,b)
+
+function Person(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+}
+
+Person.prototype.getFullName = '1'
+const member = new Person("Lydia", "Hallie");
+
+// console.log(member.getFullName);
 
 const cusGetElementByIdByDFS = function (parentNode, id) {
     // 深度优先, 递归实现
@@ -42,8 +72,8 @@ function a() {
     this.sb = '2'
 }
 
- a.prototype.sth = '1'
- var b = new a()
+//  a.prototype.sth = '1'
+//  var b = new a()
 
 // 函数柯里化
 function curry(fn, args) {
