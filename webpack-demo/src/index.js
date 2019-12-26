@@ -2,7 +2,7 @@ import './style.css'
 // import MyImage from './my-image.png'
 import printMe from './print.js';
 
-console.log(3);
+console.log(4);
 function component() {
     var element = document.createElement('div');
     var btn = document.createElement('button');
