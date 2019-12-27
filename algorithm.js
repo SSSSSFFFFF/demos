@@ -14,7 +14,7 @@ function erfen_digui(arr, val, left = 0, right = arr.length - 1) {
     return erfen_digui(arr, val, left,right)
 }
 
-console.log(erfen_digui([0, 1, 2, 3, 6, 51, 56, 77, 989], 1));
+// console.log(erfen_digui([0, 1, 2, 3, 6, 51, 56, 77, 989], 1));
 
 function _indexOf(a,b){
     var reg = new RegExp(b,'g')
@@ -276,6 +276,7 @@ function flattenDeep(arr){
     arrMap(arr)
     function arrMap(arr){
         arr.map(i => {
+            console.log(i)
             if (typeof (i) == 'number') {
                 newArr.push(i)
             } else {
@@ -287,4 +288,4 @@ function flattenDeep(arr){
 }
 
 
-// flattenDeep([1, [2, [3, 4], 5]])
+flattenDeep([1, [2, [3, 4], 5]])
