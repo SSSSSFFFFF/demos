@@ -1,6 +1,17 @@
+function str2Base64(str){
+    let newStr = ''
+    for (let i = 0; i < str.length; i++) {
+        newStr = newStr + '0'+str[i].charCodeAt().toString(2)
+    }
+    let i = newStr.length/6
+    for (let i = 0; i < newStr.length / 6; i++) {
+        console.log(parseInt(newStr.substring(i,i+6),2));
+    }
+}
+// str2Base64("Tom")
 
 var a = 'No. 4120 People\'s Pond Road';
-console.log(a)
+// console.log(a)
 
 function erfen_digui(arr, val, left = 0, right = arr.length - 1) {
     let mid = Math.floor((right + left) / 2)
