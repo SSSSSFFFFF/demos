@@ -1,3 +1,10 @@
+var str = '10000000000';
+var arr = [];
+for (var i = 0; i < Math.round(a.length / 3); i++) {
+    arr.push(str.substring(str.length - 3 * (i + 1), str.length - i * 3));
+}
+arr.reverse();
+arr.join('.')
 function str2Base64(str){
     let newStr = ''
     for (let i = 0; i < str.length; i++) {
@@ -5,10 +12,10 @@ function str2Base64(str){
     }
     let i = newStr.length/6
     for (let i = 0; i < newStr.length / 6; i++) {
-        console.log(parseInt(newStr.substring(i,i+6),2));
+        console.log(newStr.substring(i,i+6));
     }
 }
-// str2Base64("Tom")
+str2Base64("Tom")
 
 var a = 'No. 4120 People\'s Pond Road';
 // console.log(a)
