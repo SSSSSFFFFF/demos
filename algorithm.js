@@ -1,10 +1,44 @@
-var str = '10000000000';
-var arr = [];
-for (var i = 0; i < Math.round(a.length / 3); i++) {
-    arr.push(str.substring(str.length - 3 * (i + 1), str.length - i * 3));
+function getOne1(num){
+    let a = 1;
+    let result = 0
+    while (a < num){ 
+        console.log(a);
+        result = result + a
+        a = a * 10
+    }
+    console.log(result);
 }
-arr.reverse();
-arr.join('.')
+// console.time()
+getOne1(200)
+// console.timeEnd()
+
+
+//448
+function getOne(num){
+    let result = 0
+    for (let i = 1; i <= num; i++) {
+        if (i.toString().match(/[1]/g)){
+            result = result + i.toString().match(/[1]/g).length
+        }
+    }
+    console.log(result);
+}
+getOne(200)
+
+
+
+function threePoint(str){
+    str = '0' * (3 - str.length % 3)+str
+    let newStr = ''
+    for (let i = 0; i < Math.floor(str.length/ 3); i++) {
+        console.log(str.substring(i,i+3));
+        str.substring(i, i + 3)+'.'
+        newStr = newStr + str.substring(i, i + 3) + '.'
+    }
+    console.log(newStr.substring(1, newStr.length-1));
+}
+// threePoint('10000000000')
+
 function str2Base64(str){
     let newStr = ''
     for (let i = 0; i < str.length; i++) {
