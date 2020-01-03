@@ -1,3 +1,78 @@
+var entry = {
+    a: {
+        b: {
+            c: {
+                dd: 'abcdd'
+            }
+        },
+        d: {
+            xx: 'adxx'
+        },
+        e: 'ae'
+    }
+}
+function toObj(params) {
+    
+}
+
+var entry = {
+    'a.b.c.dd': 'abcdd',
+    'a.d.xx': 'adxx',
+    'a.e': 'ae',
+    'b.e':'cc',
+}
+
+// doSth(entry)
+function doSth(obj){
+    let output = {}
+    for (const key in obj) {
+        console.log(key,obj[key]);
+        let arr = key.split('.')
+        if (!output[arr[0]]){
+            output[arr[0]] = Object.create(null)
+        }
+        // output.a
+        let moreObj = output[arr[0]]
+        for (let i = 1; i < arr.length; i++) {
+            //arr[i]:b,c,dd
+            if (i == arr.length -1){
+                moreObj[arr[i]] = obj[key]
+            } else {
+                moreObj[arr[i]] = Object.create(null)
+            }
+            // 取下一层a.b
+            moreObj = moreObj[arr[i]]
+        }
+    }
+    console.log(output);
+}
+
+function arrayOnlyOne(arr) {
+    // console.log(...arr);
+    // arr.map
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i+1; j < arr.length; j++) {
+            if (arr[i] === arr[j]){
+                console.log(arr[i]);
+            }
+        }
+    }
+}
+// arrayOnlyOne([123, "meili", "123", "mogu", 123])
+
+function getLength(str){
+    const arr = str.match(/(\w)\1*/g);
+    const maxlen = Math.max(...arr.map(s => s.length));
+    let result  = {};
+    arr.map(i=>{
+        if (i.length == maxlen){
+            result[i[0]] = maxlen
+        }
+    })
+    console.log(result);
+}
+// getLength('abbkeebb')
+
 function getOne1(num){
     let a = 1;
     let result = 0
@@ -9,7 +84,7 @@ function getOne1(num){
     console.log(result);
 }
 // console.time()
-getOne1(200)
+// getOne1(200)
 // console.timeEnd()
 
 
@@ -23,7 +98,7 @@ function getOne(num){
     }
     console.log(result);
 }
-getOne(200)
+// getOne(200)
 
 
 
@@ -49,7 +124,7 @@ function str2Base64(str){
         console.log(newStr.substring(i,i+6));
     }
 }
-str2Base64("Tom")
+// str2Base64("Tom")
 
 var a = 'No. 4120 People\'s Pond Road';
 // console.log(a)
@@ -340,4 +415,4 @@ function flattenDeep(arr){
 }
 
 
-flattenDeep([1, [2, [3, 4], 5]])
+// flattenDeep([1, [2, [3, 4], 5]])
