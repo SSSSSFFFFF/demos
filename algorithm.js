@@ -1,18 +1,37 @@
-var entry = {
-    a: {
-        b: {
-            c: {
-                dd: 'abcdd'
-            }
-        },
-        d: {
-            xx: 'adxx'
-        },
-        e: 'ae'
+
+
+toObjtoObj()
+function toObjtoObj(){
+    var entry = {
+        a: {
+            b: {
+                c: {
+                    dd: 'abcdd'
+                }
+            },
+            d: {
+                xx: 'adxx'
+            },
+            e: 'ae'
+        }
     }
-}
-function toObj(params) {
-    
+    var result = {}
+    function toObj(obj, name='') {
+        for (const key in obj) {
+            if (typeof (obj[key]) == 'string') {
+                result[name+'.'+key] = obj[key]
+            } else {
+                if (name){
+                    paname = name + '.' + key
+                } else {
+                    paname = key
+                }
+                toObj(obj[key], paname)
+            }
+        }
+    }
+    toObj(entry)
+    console.log(result);
 }
 
 var entry = {
