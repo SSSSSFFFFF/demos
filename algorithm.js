@@ -1,6 +1,107 @@
+function changeObjProperty(o) {
+    o.siteUrl = "http://www.baidu.com"
+    o = new Object()
+    o.siteUrl = "http://www.google.com"
+    console.log(o.siteUrl)
+}
+let webSite = new Object();
+changeObjProperty(webSite);
+// console.log(webSite.siteUrl);
+
+function name(params,index) {
+    let num = Number(params[index]) +1
+    index++
+    // console.log(index, num);
+    if (index< params.length){
+        return num.toString() + name(params,index)
+    } else {
+        return num
+    }
+}
+// console.log(name('723456777',0));
+
+function reserve(num) {
+    let str = num.toString();
+    let len = str.length
+    let first = str[len - 1]
+    if (str.length > 1) {
+        return first + reserve(str.substring(0, len-1))
+    } else {
+        return first
+    }
+}
+// console.log(reserve(723456777));
+// console.log(typeof(reserve(723456777)));
 
 
-toObjtoObj()
+// function Foo() {
+//     Foo.a = function () {
+//         console.log(1)
+//     }
+//     this.a = function () {
+//         console.log(2)
+//     }
+// }
+// Foo.prototype.a = function () {
+//     console.log(3)
+// }
+// Foo.a = function () {
+//     console.log(4)
+// }
+// Foo.a();//4
+// let obj = new Foo();
+// // obj.a();//2
+// Foo.a();//1
+
+function print(n) {
+    setTimeout(() => {
+        console.log(--i);
+    }, Math.floor(Math.random() * 1000));
+}
+for (var i = 0; i < 10; i++) {
+    // print(i);
+}
+
+function x7(x) {
+    let arr = Array(x)
+    let resultArr = [...arr, ...arr, ...arr, ...arr, ...arr, ...arr, ...arr]
+    console.log(resultArr.length);
+    return 
+}
+// x7(10)
+// matchUrl('https://www.xx.cn/api?keyword=&level1=&local_batch_id=&elective=&local_province_id=33')
+function matchUrl(url) {
+    let result = url.match(/elective=\d*,*\d*/)
+    console.log(result);
+}
+
+// continuity('1,2,3,5,7,8,10,12,15,20,1,2')
+function continuity(str) {
+    let arr = str.split(',')
+    let result = ''
+    let start = arr[0]
+    let last = ''
+    add(0,1)
+    function add(num1,num2) {
+        if (Number(arr[num1]) + 1 != arr[num2]) {
+            last = arr[num1]
+            if (start == last ){
+                result = result +','+last
+            } else {
+                result = result +',' + start + '~' + last
+            }
+            start = arr[num1+1]
+        }
+        if (num2 < arr.length){
+            add(num2, num2 + 1)
+        }
+    }
+
+    console.log(result.substring(1));
+}
+
+
+// toObjtoObj()
 function toObjtoObj(){
     var entry = {
         a: {
