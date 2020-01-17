@@ -1,3 +1,29 @@
+let objc = {
+    a: 1,
+    b: Symbol('2'),
+    c:{
+        d: Symbol('3'),
+        e: {
+            f: Symbol('4'),
+        }
+    }
+};
+
+function deepClone(obj) { 
+    let result = {}
+    for (const key in obj) {
+        typeof (obj[key]) == 'object' ? 
+            result[key] = deepClone(obj[key]) : 
+            result[key] = obj[key]
+    }
+    return result
+}
+let objct = deepClone(objc)
+objct.c.e.f = 2
+console.log(objc);
+console.log(objct);
+
+
 function changeObjProperty(o) {
     o.siteUrl = "http://www.baidu.com"
     o = new Object()
@@ -5,7 +31,7 @@ function changeObjProperty(o) {
     console.log(o.siteUrl)
 }
 let webSite = new Object();
-changeObjProperty(webSite);
+// changeObjProperty(webSite);
 // console.log(webSite.siteUrl);
 
 function name(params,index) {
