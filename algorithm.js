@@ -1,27 +1,130 @@
-let objc = {
-    a: 1,
-    b: Symbol('2'),
-    c:{
-        d: Symbol('3'),
-        e: {
-            f: Symbol('4'),
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function (s) {
+    if (s == ' ' || s.length == 1) {
+        return 1
+    }
+    let result = 0
+    for (let i = 0; i < s.length; i++) {
+        for (let j = i + 1; j < s.length+1; j++) {
+            if (test(s.substring(i, j))){
+                if (s.substring(i, j).length > result) {
+                    result = s.substring(i, j).length
+                }
+            }
+            
+        }
+    }
+    test(s)
+    function test(s) {
+        for (let i = 0; i < s.length; i++) {
+            if (s.indexOf(s[i]) != i){
+                return false
+            }
+        }
+        return true
+    }
+    // console.log(result);
+    return result
+};
+// lengthOfLongestSubstring("aabaab!bb");
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var addTwoNumbers = function (l1, l2) {
+    let result = new ListNode(null);
+    let nextRst = result;
+    // 进位
+    let params = 0 // 传给下一个层级的值
+    let val = 0 // 传给当前层级的值
+
+    while (l1 != null || l2 != null) {
+        // TODO
+        let x = (l1 != null) ? l1.val : 0;
+        let y = (l2 != null) ? l2.val : 0;
+
+        val = (x + y + params) % 10;
+        params = Math.floor((x + y + params) / 10);
+
+        nextRst.next = new ListNode(val)
+        nextRst = nextRst.next
+
+        if (l1 != null) l1 = l1.next
+        if (l2 != null) l2 = l2.next
+
+    }
+
+    if (params) {
+        nextRst.next = new ListNode(params)
+    }
+
+    return result.next
+};
+// addTwoNumbers([2,4,3],
+// [5, 6, 4])
+
+
+var twoSum = function (nums, target) {
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i+1; j < nums.length; j++) {
+            if (nums[i] + nums[j] == target){
+               return [i ,j];
+            }
         }
     }
 };
+// console.log(twoSum([3, 2, 4],
+// 6))
 
-function deepClone(obj) { 
-    let result = {}
-    for (const key in obj) {
-        typeof (obj[key]) == 'object' ? 
-            result[key] = deepClone(obj[key]) : 
-            result[key] = obj[key]
+
+function addSome(m){
+    let temp = function (...args) {
+        console.log(m, args);
+        return addSome(m + args.reduce((a, b) => a + b))
     }
-    return result
+    temp.toString = function(){
+        return m
+    }
+    return temp
 }
-let objct = deepClone(objc)
-objct.c.e.f = 2
-console.log(objc);
-console.log(objct);
+
+// let result
+
+
+// //递归
+let secIndex = 0
+// function twoSum(arr, num, index = 0) {
+//     // console.log(arr, num);
+//     if (arr[index] == num - arr[secIndex] && index != secIndex) {
+//         result = new Array(index, secIndex)
+//         return result
+//     } else {
+//         secIndex++
+//         if (secIndex < arr.length) {
+//             return twoSum(arr, num,index)
+//         } else {
+//             secIndex = 0
+//             index++
+//             if (index < arr.length) {
+//                return twoSum(arr, num, index)
+//             }
+//         }
+//     }
+// }
+
 
 
 function changeObjProperty(o) {
