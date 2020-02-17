@@ -1,3 +1,62 @@
+console.log(b)
+let b = 'Hello world'
+
+
+function halfSearch1(arr, num ,len){
+    len = Math.floor(arr.length / 2);//2
+    function recursion(arr, num, len){
+        if (num < arr[len]) {
+            len = Math.floor(len / 2);
+        } else if (num == arr[len]) {
+            return len
+        } else {
+            len = len+ Math.floor(len / 2)
+        }
+        return recursion(arr,num,len)
+    }
+    return recursion(arr, num, len)
+}
+
+function halfSearch(arr, num){
+    let saveArr = JSON.parse(JSON.stringify(arr))
+    function recursion(arr, num){
+        let halfNum = Math.floor(arr.length / 2);
+        if (num < arr[halfNum]) {
+            arr.splice(halfNum)
+        } else if (num > arr[halfNum]) {
+            arr = arr.splice(halfNum + 1)
+        } else {
+            return saveArr.indexOf(arr[halfNum])
+        }
+        return recursion(arr, num) //[1,3],3,0
+    }
+    return recursion(arr, num)
+    
+}
+// console.log(halfSearch1([1, 3, 4, 5, 20], 20));
+
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var reverseList = function (head) {
+    if(!head) {
+        return null;
+    }
+    while (head) {
+        let next = head.next;
+        next
+    }
+};
+
 
 /**
  * @param {string} s
@@ -398,8 +457,8 @@ function _indexOf(a,b){
     console.log(c);
     console.log(c?c.index:-1)
 }
-var a = 'abcdefghijkl'
-var b = 'def'
+// var a = 'abcdefghijkl'
+// var b = 'def'
 // _indexOf(a,b)
 
 function Person(firstName, lastName) {
