@@ -1,5 +1,48 @@
-console.log(b)
-let b = 'Hello world'
+let a = {
+    value: 1
+}
+Function.prototype.ownCall = function (obj) {
+    var context = context || window
+    obj.that = this
+    var args = [...arguments].slice(1)
+    var result = obj.that(...args)
+    delete obj.that
+    return result
+}
+Function.prototype.ownApply = function (obj) {
+    var context = context || window
+    obj.that = this
+    var args = arguments[1]
+    var result = obj.that(...args)
+    delete obj.that
+    return result
+}
+Function.prototype.ownBind = function(obj){
+    let that = this;
+    var args = [...arguments].slice(1)
+    return function F() {
+        if (this instanceof F) {
+            console.log(...args,'???',...arguments)
+            return new that(...args, ...arguments)
+        }
+        return that.apply(obj, args)
+    }
+}
+
+
+function getValue(name, age) {
+    console.log(name)
+    console.log(age)
+    console.log(this.value)
+}
+
+// getValue.ownCall(a, 'yck', '24')
+// getValue.ownApply(a, ['yck', '24'])
+// getValue.ownbind(a, 'yck', '24')()
+let func = getValue.ownBind(a, 'yck')
+new func('1')
+// getValue.ownBind(a, 'yck', '24')()
+
 
 
 function halfSearch1(arr, num ,len){
@@ -434,7 +477,7 @@ function str2Base64(str){
 }
 // str2Base64("Tom")
 
-var a = 'No. 4120 People\'s Pond Road';
+// var a = 'No. 4120 People\'s Pond Road';
 // console.log(a)
 
 function erfen_digui(arr, val, left = 0, right = arr.length - 1) {
@@ -503,9 +546,9 @@ function _new() {
 }
 // _new(a())
 
-function a() {
-    this.sb = '2'
-}
+// function a() {
+//     this.sb = '2'
+// }
 
 //  a.prototype.sth = '1'
 //  var b = new a()
