@@ -1,3 +1,29 @@
+
+function multiFn(a, b, c) {
+    console.log(a,b,c)
+    return a * b * c;
+}
+
+
+function ownCurry(params) {
+    console.log(params.length)
+    let arr = [] 
+    return function(...para){
+        let len = para.length
+        console.log(len)
+        let moreArr = arr.concat(para)
+        return params.apply(null,para)
+    }
+}
+
+let multi = ownCurry(multiFn)
+
+// multi(2, 3, 4);
+// console.log(multi(2,3,4))
+console.log(multi(2)(3,4))
+// console.log(multi(2, 3)(4));
+// console.log(multiFn(2)(3)(4));
+
 let a = {
     value: 1
 }
@@ -39,8 +65,8 @@ function getValue(name, age) {
 // getValue.ownCall(a, 'yck', '24')
 // getValue.ownApply(a, ['yck', '24'])
 // getValue.ownbind(a, 'yck', '24')()
-let func = getValue.ownBind(a, 'yck')
-new func('1')
+// let func = getValue.ownBind(a, 'yck')
+// new func('1')
 // getValue.ownBind(a, 'yck', '24')()
 
 
@@ -567,10 +593,8 @@ function curry(fn, args) {
         }
     }
 }
-function multiFn(a, b, c) {
-    return a * b * c;
-}
-var multi = curry(multiFn);
+
+// var multi = curry(multiFn);
 // console.log(multi(2)(3)(4));
 // multi(2, 3, 4);
 // multi(2)(3, 4);
