@@ -7,7 +7,7 @@ function multiFn(a, b, c) {
 function ownCurry(params,...moreArrs) {
     return function(...para){
         let arr = [] 
-        let moreArr = arr.concat(para, moreArrs)
+        let moreArr = arr.concat(moreArrs,para )
         let len = moreArr.length
         if (len < params.length){
             return ownCurry.call(this, params, ...moreArr)
