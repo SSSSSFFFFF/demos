@@ -4,23 +4,23 @@ function multiFn(a, b, c) {
     return a * b * c;
 }
 
-
-function ownCurry(params) {
-    console.log(params.length)
-    let arr = [] 
+function ownCurry(params,...moreArrs) {
     return function(...para){
-        let len = para.length
-        console.log(len)
-        let moreArr = arr.concat(para)
-        return params.apply(null,para)
+        let arr = [] 
+        let moreArr = arr.concat(para, moreArrs)
+        let len = moreArr.length
+        if (len < params.length){
+            return ownCurry.call(this, params, ...moreArr)
+        }  else {
+            return params.apply(this, moreArr)
+        }
     }
 }
 
 let multi = ownCurry(multiFn)
 
 // multi(2, 3, 4);
-// console.log(multi(2,3,4))
-console.log(multi(2)(3,4))
+console.log(multi(2)(3)(4))
 // console.log(multi(2, 3)(4));
 // console.log(multiFn(2)(3)(4));
 
