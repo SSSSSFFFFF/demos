@@ -21,8 +21,8 @@ let multi = ownCurry(multiFn)
 
 // multi(2, 3, 4);
 console.log(multi(2)(3)(4))
-// console.log(multi(2, 3)(4));
-// console.log(multiFn(2)(3)(4));
+console.log(multi(2, 3)(4));
+console.log(multiFn(2)(3)(4));
 
 let a = {
     value: 1
