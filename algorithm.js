@@ -1,8 +1,10 @@
 
 function multiFn(a, b, c) {
-    console.log(a,b,c)
+    console.log(a,b,c,arguments)
     return a * b * c;
 }
+multiFn.call(1,2,3,4,5)
+
 
 function ownCurry(params,...moreArrs) {
     return function(...para){
@@ -20,9 +22,9 @@ function ownCurry(params,...moreArrs) {
 let multi = ownCurry(multiFn)
 
 // multi(2, 3, 4);
-console.log(multi(2)(3)(4))
-console.log(multi(2, 3)(4));
-console.log(multiFn(2)(3)(4));
+// console.log(multi(2)(3)(4))
+// console.log(multi(2, 3)(4));
+// console.log(multiFn(2)(3)(4));
 
 let a = {
     value: 1
