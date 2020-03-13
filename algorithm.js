@@ -9,36 +9,59 @@ function fetchUser() {
     });
 }
 
-var a = 0
-var b = async () => {
+/**
+ * Promise 方式
+ */
+function getUserByPromise() {
+    fetchUser()
+        .then((data) => {
+            console.log(data);
+        }, (error) => {
+            console.log(error);
+        })
+}
+getUserByPromise();
+
+/**
+ * async 方式
+ */
+async function getUserByAsync() {
+    let user = await fetchUser();
+    return user;
+}
+getUserByAsync()   
+    .then(v => console.log(v));
+
+// var a = 0
+var b =  async()=>{
     a = a + await 10
     console.log('2', a) // -> '2' 10
     a = (await 10) + a
     console.log('3', a) // -> '3' 20
 }
-b()
-a++
-console.log('1', a) // -> '1' 1
+// b()
+// a++
+// console.log('1', a) // -> '1' 1
 
 
 function foo() {
     console.log('this',this.a)
 }
 var a = 1
-foo()
+// foo()
 
 var obj = {
     a: 2,
     foo: foo
 }
-obj.foo()
+// obj.foo()
 
 // 以上两者情况 `this` 只依赖于调用函数前的对象，优先级是第二个情况大于第一个情况
 
 // 以下情况是优先级最高的，`this` 只会绑定在 `c` 上，不会被任何方式修改 `this` 指向
-var c = new foo()
-c.a = 3
-console.log("c.a",c.a)
+// var c = new foo()
+// c.a = 3
+// console.log("c.a",c.a)
 
 // 还有种就是利用 call，apply，bind 改变 this，这个优先级仅次于 new
 
