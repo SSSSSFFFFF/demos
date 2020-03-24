@@ -94,7 +94,7 @@ let multi = ownCurry(multiFn)
 
 // let a = {
 //     value: 1
-// }
+// }1
 Function.prototype.ownCall = function (obj) {
     var context = context || window
     obj.that = this
